@@ -201,8 +201,6 @@ p.navbar-brand {
 .flex {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
-    align-items: baseline;
 }
 
 .card-buttons{
@@ -222,11 +220,21 @@ p.navbar-brand {
     width: 100%;
     height: 60px;
     background-color: var(--lion);
+    color: var(--black-alt);
 }
 
 .footer p {
-    font-size: 0.8rem;
-    color: var(--black-alt);
+    margin: 0;
+}
+
+.socials :not(:last-child){
+    margin-right: 1rem;
+}
+
+.footer-nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 }
 
 .bold {
@@ -236,7 +244,7 @@ p.navbar-brand {
 /* Features */
 
 #features{
-    background-color: #FDF9E0FF;
+    background-color: var(--cornsilk);
     padding: 5rem;
 }
 
@@ -246,20 +254,6 @@ p.navbar-brand {
 
 .features-line{
     padding: 0 6rem;
-}
-
-/* Footer */
-
-#footer{
-    padding: 5rem;
-}
-
-.ft-icons{
-    margin: 1%;
-}
-
-.ft-line{
-    color: #8f8f8f;
 }
 
 /*********ABOUT US***********/
