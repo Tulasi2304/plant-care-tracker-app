@@ -2,6 +2,28 @@ body{
     text-align: center;
 }
 
+h1, h2, h3{
+    color: #566246;
+}
+
+h1{
+    font-size: 3.5rem;
+}
+
+h2{
+    font-size: 3rem;
+}
+
+h3{
+    font-size: 2rem;
+}
+
+p{
+    font-size: 1rem;
+}
+
+/*********HOME PAGE***********/
+
 /* Title */
 
 .navbar{
@@ -9,8 +31,6 @@ body{
 }
 
 .main-heading{
-    color: #566246;
-    font-size: 3.5rem;
     margin: 15% 10% 5%;
     line-height: 1.5;
 }
@@ -29,6 +49,42 @@ body{
 
 .btn:hover{
     background-color: #B33144;
+}
+
+/* Features */
+
+#features{
+    background-color: #FDF9E0FF;
+    padding: 5rem;
+}
+
+.features-title{
+    margin-top: 2rem;
+}
+
+.features-line{
+    padding: 0 6rem;
+}
+
+/* Footer */
+
+#footer{
+    padding: 5rem;
+}
+
+.ft-icons{
+    margin: 1%;
+}
+
+.ft-line{
+    color: #8f8f8f;
+}
+
+/*********ABOUT US***********/
+
+.introduction{
+    padding: 5rem;
+    text-align: left;
 }
 
 /* Media breakpoints */
