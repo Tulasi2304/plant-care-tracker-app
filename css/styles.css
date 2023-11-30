@@ -1,0 +1,39 @@
+body{
+    text-align: center;
+}
+
+/* Title */
+
+.navbar{
+    background-color: #FDF9E0;
+}
+
+.main-heading{
+    color: #566246;
+    font-size: 3.5rem;
+    margin: 15% 10% 5%;
+    line-height: 1.5;
+}
+
+.plant-saplings{
+    margin: 2rem 0;
+    border-radius: 50%;
+}
+
+.btn{
+    background-color: #8b2635;
+    color: #fff;
+}
+
+.btn:hover{
+    background-color: #B33144;
+    color: #fff;
+}
+
+/* Media breakpoints */
+
+/* @media (max-width: 992px){
+    .plant-saplings{
+        
+    }
+} */
