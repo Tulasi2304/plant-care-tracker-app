@@ -1,24 +1,69 @@
-body{
+:root{
+    --ebony: #566246ff;
+    --lion: #ba9571ff;
+    --claret: #8b2635ff;
+    --sage: #aab589ff;
+    --cornsilk: #fdf9e0ff;
+    --white-alt: #f1f1f1;
+    --black-alt: #212423;
+}
+
+body {
+    position: relative;
+    min-height: 100vh;
+}
+
+.container-fluid {
+    padding: 0 5%;
+}
+
+.content-wrap {
+    padding-bottom: 75px;
+}
+
+button.navbar-toggler {
+    outline: none;
+    border: none;
+}
+
+button.navbar-toggler:focus {
+    outline: none;
+    border: none;
+    box-shadow: none;
+}
+
+.title {
+    text-align: center;
+    color: var(--ebony);
+    padding: 2rem 0;
+    font-family: 'Poppins', sans-serif;
+}
+
+.starting-content {
+    text-align: center;
+}
+
+.center-align {
     text-align: center;
 }
 
 h1, h2, h3{
-    color: #566246;
+    color: var(--ebony);
 }
 
-h1{
+h1 {
     font-size: 3.5rem;
 }
 
-h2{
+h2 {
     font-size: 3rem;
 }
 
-h3{
+h3 {
     font-size: 2rem;
 }
 
-p{
+p {
     font-size: 1rem;
 }
 
@@ -26,29 +71,177 @@ p{
 
 /* Title */
 
-.navbar{
+/* .navbar {
     background-color: #FDF9E0;
-}
+} */
 
-.main-heading{
+.main-heading {
+    color: var(--ebony);
+    font-size: 3.5rem;
     margin: 15% 10% 5%;
     line-height: 1.5;
 }
 
-.plant-saplings{
+.plant-saplings {
     margin: 2rem 0;
     border-radius: 50%;
     height: 30rem;
     width: 30rem;
 }
 
-.btn:link{
-    background-color: #8b2635;
-    color: #fff;
+.btn {
+    background-color: var(--claret);
+    color: var(--white-alt);
 }
 
-.btn:hover{
+.btn:link {
+    background-color: var(--claret);
+    color: var(--white-alt);
+}
+
+.btn:hover {
     background-color: #B33144;
+    color: var(--white-alt);
+}
+
+.view-plant {
+    background-color: var(--ebony);
+}
+
+.view-plant:hover {
+    background-color: rgb(98, 112, 80);
+}
+
+h3 {
+    color: var(--ebony);
+    text-align: center;
+    padding: 3rem 0 0;
+    font-family: 'Poppins', sans-serif;
+}
+
+.underline {
+    display: inline-block;
+    border-bottom: 2px solid var(--ebony);
+    padding-bottom: 1px;
+}
+
+hr {
+    margin-top: 2rem;
+}
+
+.navbar {
+    background-color: var(--sage);
+    padding-top: 15px;
+    padding-bottom: 15px;
+    border: 0;
+    border-radius: 0;
+    margin-bottom: 0.75rem;
+    font-size: 12px;
+}
+
+.nav-link {
+    color: var(--white-alt);
+    transition: color 150ms ease-in-out;
+}
+
+p.navbar-brand {
+    margin: 0;
+}
+
+.navbar-nav li a:hover {
+    color: var(--claret) !important;
+}
+
+.plant-name {
+    color: var(--ebony);
+    margin-bottom: 0;
+    padding-bottom: 0.25rem;
+    line-height: 1.5rem;
+    padding-top: 0.25rem;
+    font-weight: bold;
+    font-family: 'Poppins', sans-serif;
+}
+
+.plant-card {
+    background-color: var(--cornsilk);
+}
+
+.plant-card-image {
+    height: 12rem;
+    max-width: 100%;
+    background-color: var(--white-alt);
+    overflow: hidden;
+    text-align: center;
+}
+
+.plant-card-image img {
+    height: inherit;
+    transform: scale(1);
+    opacity: 1;
+    transition-property: transform, opacity;
+    transition-duration: 200ms;
+    transition-timing-function: ease-in-out;
+}
+
+.plant-card-image img:hover {
+    opacity: 0.75;
+    transform: scale(1.2);
+}
+
+.plant-card-body {
+    padding: 0.25rem 0.5rem 0.5rem;
+}
+
+.plant-name a {
+    color: var(--black-alt);
+    text-decoration: none;
+    transition: color 175ms ease-in-out;
+}
+
+.plant-name a:hover {
+    color: var(--ebony);
+    text-decoration: none;
+}
+
+.scientific-name {
+    margin-top: 0;
+    font-style: italic;
+    opacity: 0.85;
+}
+
+.flex {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: baseline;
+}
+
+.card-buttons{
+    justify-content: flex-start;
+    gap: 1rem;
+    padding: 0 0.5rem 0.5rem;
+}
+
+#addPlantModal {
+    display: none;
+}
+
+.footer {
+    position: absolute;
+    text-align: center;
+    bottom: 0;
+    width: 100%;
+    height: 60px;
+    background-color: var(--lion);
+}
+
+.footer p {
+    font-size: 0.8rem;
+    color: var(--black-alt);
+}
+
+.bold {
+    font-weight: bold;
 }
 
 /* Features */
@@ -94,3 +287,19 @@ p{
         
     }
 } */
+
+@media (max-width: 1028px) {
+    .plant-card-image {
+        width: 100%;
+        height: auto;
+    }
+
+    .plant-card-image img {
+        width: inherit;
+
+    }
+    body .res-text {
+        font-size: larger;
+    }
+
+}
