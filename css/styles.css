@@ -276,17 +276,22 @@ p.navbar-brand {
 /*********ABOUT US***********/
 
 .about-page{
-    padding: 5rem;
     text-align: left;
 }
 
-/* Media breakpoints */
+#introduction, #mission{
+    padding: 2rem;
+}
 
-/* @media (max-width: 992px){
-    .plant-saplings{
-        
-    }
-} */
+.about-img{
+    padding: 1rem;
+}
+
+.paragraph{
+    padding: 1rem 0;
+}
+
+/* Media breakpoints */
 
 @media (max-width: 1028px) {
     .plant-card-image {
@@ -300,6 +305,10 @@ p.navbar-brand {
     }
     body .res-text {
         font-size: larger;
+    }
+
+    .about-img{
+        width: 100%;
     }
 
 }
