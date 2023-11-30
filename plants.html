@@ -40,33 +40,36 @@
 
 <body>
   <div class="content-wrap container-fluid">
-    <h1 class="title">Contact Us</h1>
-    <p class="starting-content res-text">
-      If you require further assistance regarding any aspect or wish to provide any feedback!
-    </p>
-    <form class="contact-form">
-      <div class="mb-3">
-        <label for="name" class="form-label">Name</label>
-        <small id="contentHelp" class="form-text text-muted">(required)</small>
-        <input type="text" class="form-control" name="name" id="name" required>
-      </div>
-      <div class="mb-3">
-        <label for="email" class="form-label">Email</label>
-        <small id="contentHelp" class="form-text text-muted">(required)</small>
-        <input type="email" class="form-control" name="email" id="email" required>
-      </div>
-      <div class="mb-3">
-        <label for="website" class="form-label">Website</label>
-        <input type="text" class="form-control" name="website" id="website">
-      </div>
-      <div class="mb-3">
-        <label for="content" class="form-label">Your Message</label>
-        <small id="contentHelp" class="form-text text-muted">(required)</small>
-        <textarea class="form-control" name="message" id="message" rows="5" required></textarea>
-      </div>
-      <!-- To Do: Link to google form-->
-      <button id="contactSubmit" class="btn" type="button" role="button">Submit</button>
-    </form>
+    <h1 class="title">My Plants</h1>
+    
+    <div id ="plantsList" class="row pt-5 pb-5 mx-lg-4 px-3 px-lg-5">
+        <div class="col-lg-4 pb-3 px-2 add-plant">
+          <div class="plant-card">
+            <button id="addPlant" type="button" class="btn">+</button>
+            <p>Add Plant</p>
+            <!-- To Do: Add form within modal -->
+          </div>
+        </div>
+    </div>
+
+    <div id="addPlantModal">
+      <form id="addPlantForm">
+        <div class="mb-3">
+          <label for="name" class="form-label">Name</label>
+          <small id="contentHelp" class="form-text text-muted">(required)</small>
+          <input type="text" class="form-control" name="name" id="name" required>
+        </div>
+        <div class="mb-3">
+          <label for="scientificName" class="form-label">Scientific Name</label>
+          <input type="text" class="form-control" name="scientificName" id="scientificName">
+        </div>
+        <div class="mb-3">
+          <label for="location" class="form-label">Location</label>
+          <input type="text" class="form-control" name="location" id="location">
+        </div>
+        <button id="plantSubmit" class="btn" type="submit">Submit</button>
+      </form>
+    </div>
   </div>
   <footer class="footer py-3">
     <div class="footer-nav container-fluid">
@@ -80,7 +83,7 @@
     </div>
   </footer>
 
-  <script src="test.js"></script>
+  <script src="script.js"></script>
 </body>
 
 </html>
