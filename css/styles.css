@@ -47,10 +47,6 @@ button.navbar-toggler:focus {
     text-align: center;
 }
 
-h1, h2, h3{
-    color: var(--ebony);
-}
-
 h1 {
     font-size: 3.5rem;
 }
@@ -68,17 +64,10 @@ p {
 }
 
 /*********HOME PAGE***********/
-
-/* Title */
-
-/* .navbar {
-    background-color: #FDF9E0;
-} */
-
 .main-heading {
     color: var(--ebony);
     font-size: 3.5rem;
-    margin: 15% 10% 5%;
+    margin: 15% 0 5%;
     line-height: 1.5;
 }
 
@@ -109,10 +98,10 @@ p {
 }
 
 .view-plant:hover {
-    background-color: rgb(98, 112, 80);
+    background-color: #627050;
 }
 
-h3 {
+h1, h2, h3 {
     color: var(--ebony);
     text-align: center;
     padding: 3rem 0 0;
