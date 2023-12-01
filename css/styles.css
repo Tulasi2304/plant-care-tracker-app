@@ -268,7 +268,7 @@ p.navbar-brand {
 }
 
 #introduction, #mission{
-    padding: 2rem 5rem;
+    padding: 2rem ;
     text-align: justify;
 }
 
@@ -304,12 +304,12 @@ p.navbar-brand {
     }
 
     .about-img{
-        width: 80%;
-        padding: 1rem;
+        /* width: 100%; */
+        margin: 1rem;
     }
 
-    .img-col{
+    /* .img-col{
         text-align: center;
-    }
+    } */
 
 }
