@@ -220,7 +220,7 @@ p.navbar-brand {
     width: 100%;
     height: 60px;
     background-color: var(--lion);
-    color: var(--black-alt);
+    color: var(--white-alt);
 }
 
 .footer p {
