@@ -94,10 +94,12 @@ p {
 }
 
 .view-plant {
+    border: none;
     background-color: var(--ebony);
 }
 
 .view-plant:hover {
+    border: none;
     background-color: #697856;
 }
 
@@ -155,14 +157,14 @@ p.navbar-brand {
     background-color: var(--cornsilk);
     border-radius: 5px;
     box-shadow: none;
-    transform: perspective(100px) translateZ(0px);
+    transform: scale(1);
     transition: box-shadow 125ms ease-in-out,
                 transform 125ms ease-in-out;
 }
 
 .plant-card:hover {
-    box-shadow: 5px 5px 7px 0px #21242347;
-    transform: perspective(100px) translateZ(2px);
+    box-shadow: 7px 12px 12px 0px #21242347;
+    transform: scale(1.01);
     
 }
 
@@ -181,9 +183,6 @@ p.navbar-brand {
     height: inherit;
     transform: scale(1);
     opacity: 1;
-    transition-property: transform, opacity;
-    transition-duration: 200ms;
-    transition-timing-function: ease-in-out;
 }
 
 .plant-card-body {
@@ -223,8 +222,17 @@ p.navbar-brand {
     padding: 0 0.5rem 0.5rem;
 }
 
-#addPlantModal {
-    display: none;
+.add-plant {
+    height: 345.33px;
+}
+
+.add-plant:hover{
+    transform: perspective(100px) translateZ(0px);
+    box-shadow: none;
+}
+
+.add-plant-btn {
+    margin-top: calc(50%);
 }
 
 .footer {
