@@ -80,9 +80,9 @@ function displayPlant(plant) {
   let { id, name, scientificName: sciName, location: loc, image } = plant;
   let newPlant = document.createElement('div');
   newPlant.className = 'col-lg-4 py-3 px-3';
+  newPlant.id = `no-${id}`;
   let plantCard = document.createElement('div');
   plantCard.classList.add("plant-card");
-  plantCard.id = `no-${id}`;
   newPlant.appendChild(plantCard);
   let plantCardImg = document.createElement('div');
   plantCardImg.classList.add("plant-card-image");
@@ -134,7 +134,7 @@ function addNewPlant(event) {
 function viewPlant(id) {}
 
 function deletePlant(id) {
-  console.log(id);
+  $(`#no-${id}`).remove();
+  plantsDB.splice(id, 1);
   // localStorage.setItem("plantsDB", JSON.stringify(plantsDB));
-  // plantsDisplay.remove($(`#no-${id}`));
 }
