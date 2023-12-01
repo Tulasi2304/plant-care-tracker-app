@@ -259,6 +259,7 @@ p.navbar-brand {
 
 .features-line{
     padding: 0 6rem;
+    text-align: center;
 }
 
 /*********ABOUT US***********/
@@ -315,9 +316,15 @@ p.navbar-brand {
     }
 
     .plant-saplings{
-        width: 90%;
-        height: auto;
         border-radius: 50%;
+        height: 20rem;
+        width: 20rem;
+        margin: 2rem 0;
+    }
+
+    .features-line{
+        padding: 0;
+        text-align: center;
     }
 
 }
