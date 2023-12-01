@@ -248,8 +248,13 @@ p.navbar-brand {
     padding: 5rem;
 }
 
+.feature-icons{
+    font-size: 3rem;
+    margin-top: 3rem;
+}
+
 .features-title{
-    margin-top: 2rem;
+    padding-top: 1rem;
 }
 
 .features-line{
@@ -285,6 +290,7 @@ p.navbar-brand {
 
 .paragraph{
     padding: 1rem 0;
+    text-align: center;
 }
 
 /* Media breakpoints */
@@ -308,8 +314,10 @@ p.navbar-brand {
         margin: 1rem;
     }
 
-    /* .img-col{
-        text-align: center;
-    } */
+    .plant-saplings{
+        width: 90%;
+        height: auto;
+        border-radius: 50%;
+    }
 
 }
