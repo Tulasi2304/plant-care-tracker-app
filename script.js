@@ -34,8 +34,8 @@ const plantImages = [
 const addPlant = document.getElementById("addPlant");
 const addPlantModal = document.getElementById("addPlantModal");
 const plantsDisplay = document.getElementById("plantsList");
-addPlant.addEventListener("click", displayForm);
-let addPlantForm;
+const addPlantForm = document.getElementById("addPlantForm");
+addPlantForm.addEventListener("submit", addNewPlant);
 
 $("#addRoutine").click(addRoutine);
 
@@ -118,12 +118,6 @@ function updatePlantDB(plant) {
   plantsDB.push(plant);
   // localStorage.setItem("plantsDB", JSON.stringify(plantsDB));
   displayPlant(plant);
-}
-
-function displayForm() {
-  addPlantModal.style.display = "block";
-  addPlantForm = document.getElementById('addPlantForm');
-  addPlantForm.addEventListener('submit', addNewPlant);
 }
 
 function addNewPlant(event) {
