@@ -262,6 +262,11 @@ p.navbar-brand {
     text-align: left;
 }
 
+.plant-images {
+    overflow: hidden;
+    margin: auto;
+}
+
 #introduction, #mission{
     padding: 2rem 5rem;
     text-align: justify;
@@ -275,6 +280,7 @@ p.navbar-brand {
 .about-img{
     width: 80%;
     /* margin-right: 1rem; */
+    overflow: hidden;
 }
 
 .paragraph{
