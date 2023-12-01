@@ -319,7 +319,7 @@ p.navbar-brand {
         border-radius: 50%;
         height: 15rem;
         width: 15rem;
-        margin: 1rem auto;
+        margin: 4rem auto 0;
     }
 
     .features-line{
