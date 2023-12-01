@@ -103,6 +103,10 @@ p {
     background-color: #697856;
 }
 
+#curPlantImage {
+    border-radius: 0;
+}
+
 h1, h2, h3 {
     color: var(--ebony);
     text-align: center;
@@ -244,6 +248,18 @@ p.navbar-brand {
     color: var(--claret);
 }
 
+/* .routines p:not(:first-child) {
+    text-align: left;
+} */
+
+.routines p {
+    margin: 0;
+}
+
+.routine-name {
+    text-transform: uppercase;
+}
+
 .footer {
     position: absolute;
     text-align: center;
@@ -270,6 +286,10 @@ p.navbar-brand {
 
 .bold {
     font-weight: bold;
+}
+
+.italic {
+    font-style: italic;
 }
 
 /* Features */
