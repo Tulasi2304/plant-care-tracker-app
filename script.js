@@ -48,7 +48,14 @@ if (plantsDB === undefined || plantsDB === null) {
       scientificName: "Rosa centifolia",
       location: "Terrace",
       image: "images/pexels-huy-phan-3076899.jpg",
-      planted: "22-11-23",
+      planted: "11/22/23",
+      careRoutines: [
+        {
+          type: "Watering",
+          frequency: 1,
+          gap: "Days",
+        },
+      ],
     },
     {
       id: 1,
@@ -56,10 +63,17 @@ if (plantsDB === undefined || plantsDB === null) {
       scientificName: "Rosa centifolia",
       location: "Terrace",
       image: "images/pexels-huy-phan-3153522.jpg",
-      planted: "22-11-23",
+      planted: "03/26/23",
+      careRoutines: [
+        {
+          type: "Watering",
+          frequency: 1,
+          gap: "Days",
+        },
+      ],
     },
   ];
-  localStorage.setItem("plantsDB", JSON.stringify(plantsDB));
+  //localStorage.setItem("plantsDB", JSON.stringify(plantsDB));
 }
 
 for (let plant of plantsDB) {
@@ -80,38 +94,43 @@ class Plant{
 }
 
 function displayPlant(plant) {
-  let { id, name, scientificName: sciName, location: loc, image} = plant;
-  let newPlant = document.createElement('div');
-  newPlant.className = 'col-lg-4 py-3 px-3';
+  let { id, name, scientificName: sciName, location: loc, image } = plant;
+  let newPlant = document.createElement("div");
+  newPlant.className = "col-lg-4 py-3 px-3";
   newPlant.id = `no-${id}`;
-  let plantCard = document.createElement('div');
+  let plantCard = document.createElement("div");
   plantCard.classList.add("plant-card");
   newPlant.appendChild(plantCard);
-  let plantCardImg = document.createElement('div');
+  let plantCardImg = document.createElement("div");
   plantCardImg.classList.add("plant-card-image");
   plantCardImg.innerHTML = `<img src="${image}" alt="plant-thumbnail">`;
   plantCard.appendChild(plantCardImg);
-  let plantCardBody = document.createElement('div');
+  let plantCardBody = document.createElement("div");
   plantCardBody.classList.add("plant-card-body");
   plantCardBody.innerHTML = `<p class="plant-name"><a href="#">${name}</a></p> 
                             <p class="card-body-text scientific-name">${sciName}</p> 
                             <p class="card-body-text location">Location: ${loc}</p>`;
   plantCard.appendChild(plantCardBody);
-  let plantCardButtons = document.createElement('div');
+  let plantCardButtons = document.createElement("div");
   plantCardButtons.className = "flex card-buttons";
-  let viewBtn = document.createElement('button');
+  let viewBtn = document.createElement("button");
   viewBtn.className = "btn btn-custom view-plant";
+  viewBtn.setAttribute("data-bs-toggle", "modal");
+  viewBtn.setAttribute("data-bs-target", "#plantDetailsModal");
   viewBtn.innerHTML = `<i class="fa-solid fa-eye"></i> View`;
-  viewBtn.addEventListener('click', () => { viewPlant(id) });
+  viewBtn.addEventListener("click", () => {
+    viewPlant(id);
+  });
   plantCardButtons.appendChild(viewBtn);
-  let delBtn = document.createElement('button');
+  let delBtn = document.createElement("button");
   delBtn.className = "btn btn-custom delete-plant";
   delBtn.innerHTML = `<i class="fa-solid fa-trash"></i> Delete`;
-  delBtn.addEventListener("click", () => { deletePlant(id)});
+  delBtn.addEventListener("click", () => {
+    deletePlant(id);
+  });
   plantCardButtons.appendChild(delBtn);
   plantCard.appendChild(plantCardButtons);
   plantsDisplay.insertBefore(newPlant, plantsDisplay.children[id]);
-
 }
 
 function updatePlantDB(plant) {
@@ -132,8 +151,6 @@ function addNewPlant(event) {
     type: type.value,
     frequency: freq.value,
     gap: gaps[gap.value],
-    lastCompleted: "",
-    nextDue: ""
   }];
   const ob = new Plant(name, scientificName, location, new Date(planted), care);
   updatePlantDB(ob);
@@ -152,7 +169,48 @@ function addRoutine() {
 
 }
 
-function viewPlant(id) {}
+function viewPlant(id) {
+  localStorage.setItem("currentPlant", JSON.stringify(plantsDB[id]));
+  let currentPlant = plantsDB[id];
+  $("#modalPlantName").html(
+    `${currentPlant.name} <span class="italic">(${currentPlant.scientificName})</span>`
+  );
+  $("#curPlantImage").attr("src", currentPlant.image);
+  $("#plantDetailsModal p span").text(new Date(currentPlant.planted).toLocaleDateString("en-US", {
+    year: "numeric",
+    month: "short",
+    day: "numeric",
+  }));
+  
+  let options = {
+    year: "numeric",
+    month: "numeric",
+    day: "numeric",
+    hour12: true,
+    hour: "numeric",
+    minute: "numeric",
+  };
+
+  let timeToAdd = 0;
+  let routine = currentPlant.careRoutines[0];
+  switch (routine.gap) {
+    case "Hours": timeToAdd += routine.frequency * 3600 * 1000;
+      break;
+    case "Days": timeToAdd += routine.frequency * 24 * 3600 * 1000;
+      break;
+    case "Weeks": timeToAdd += routine.frequency * 7 * 24 * 3600 * 1000;
+    
+  }
+
+  let completed = new Date();
+  let due = completed.getTime() + timeToAdd;
+
+  $("#plantDetailsModal .routines .completed span").text(
+    completed.toLocaleString("en-US", options)
+  );
+  $("#plantDetailsModal .routines .due span").text(new Date(due).toLocaleString("en-US", options));
+
+}
 
 function deletePlant(id) {
   $(`#no-${id}`).remove();

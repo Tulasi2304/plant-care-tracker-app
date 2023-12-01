@@ -99,6 +99,29 @@
         </div>
       </div>
     </div>
+
+    <div class="modal fade" id="plantDetailsModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+      aria-labelledby="Show plant details" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header center-align">
+            <h1 class="modal-title fs-5" id="modalPlantName"></h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body center-align">
+            <div class="container-fluid px-0">
+              <img id="curPlantImage" src="" alt="plants-thumbnail" class="plant-card-image">
+              <p class="pt-2">Planted On: <span class="bold"></span></p>
+              <div class="routines">
+                <p class="bold routine-name">Watering</p>
+                <p class="completed">Last Completed: <span class="bold"></span></p>
+                <p class="due">Next Due: <span class="bold"></span></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
   <footer class="footer py-3">
     <div class="footer-nav container-fluid">
