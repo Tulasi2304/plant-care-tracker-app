@@ -276,6 +276,27 @@ p.navbar-brand {
     text-align: center;
 }
 
+/* Reviews */
+
+#reviews{
+    padding: 0 5rem 8rem;
+}
+
+.carousel-item{
+    padding: 8% 15%;
+    background-color: var(--cornsilk);
+    text-align: center;
+}
+
+/* .review-text{
+    color: black;
+} */
+
+.carousel-control-prev-icon, .carousel-control-next-icon{
+    /* margin: 4rem; */
+    background-color: var(--claret); 
+}
+
 /*********ABOUT US***********/
 
 .about-page{
