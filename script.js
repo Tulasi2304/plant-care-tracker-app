@@ -62,19 +62,19 @@ const testPlant = {
 function displayPlant(plant) {
   let { id, name, scientificName: sciName, location: loc } = plant;
   let newPlant = document.createElement('div');
-  newPlant.className = 'col-lg-4 pb-3 px-2';
+  newPlant.className = 'col-lg-4 pb-3 px-3';
   let plantCard = document.createElement('div');
   plantCard.classList.add("plant-card");
   plantCard.id = `no-${id}`;
   newPlant.appendChild(plantCard);
   let plantCardImg = document.createElement('div');
   plantCardImg.classList.add("plant-card-image");
-  plantCardImg.innerHTML = `<img src="${""}" alt="plant-thumbnail">`;
+  plantCardImg.innerHTML = `<img src="${"images/pexels-irina-iriser-1408199.jpg"}" alt="plant-thumbnail">`;
   plantCard.appendChild(plantCardImg);
   let plantCardBody = document.createElement('div');
   plantCardBody.classList.add("plant-card-body");
   plantCardBody.innerHTML =
-    `<p class="plant-name"><a href="#">${name}</a></p> <p class="scientific-name">${sciName}</p>`;
+    `<p class="plant-name"><a href="#">${name}</a></p> <p class="scientific-name">${sciName}</p> <p class="location">Loction: ${loc}</p>`;
   plantCard.appendChild(plantCardBody);
   let plantCardButtons = document.createElement('div');
   plantCardButtons.className = "flex card-buttons";
