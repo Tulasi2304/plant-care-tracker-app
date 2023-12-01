@@ -4,8 +4,8 @@
   name: "string",
   location: "string"
   scientificName: "string",
-   plantedOn
   image: "src path",
+  planted: "date",
     careRoutines: [
       {
         type: "",
@@ -34,8 +34,10 @@ const plantImages = [
 const addPlant = document.getElementById("addPlant");
 const addPlantModal = document.getElementById("addPlantModal");
 const plantsDisplay = document.getElementById("plantsList");
-addPlant.addEventListener("click", displayForm);
-let addPlantForm;
+const addPlantForm = document.getElementById("addPlantForm");
+addPlantForm.addEventListener("submit", addNewPlant);
+
+$("#addRoutine").click(addRoutine);
 
 let plantsDB = JSON.parse(localStorage.getItem("plantsDB"));
 if (plantsDB === undefined || plantsDB === null) {
@@ -46,6 +48,7 @@ if (plantsDB === undefined || plantsDB === null) {
       scientificName: "Rosa centifolia",
       location: "Terrace",
       image: "images/pexels-huy-phan-3076899.jpg",
+      planted: "22-11-23",
     },
     {
       id: 1,
@@ -53,6 +56,7 @@ if (plantsDB === undefined || plantsDB === null) {
       scientificName: "Rosa centifolia",
       location: "Terrace",
       image: "images/pexels-huy-phan-3153522.jpg",
+      planted: "22-11-23",
     },
   ];
   localStorage.setItem("plantsDB", JSON.stringify(plantsDB));
@@ -63,21 +67,20 @@ for (let plant of plantsDB) {
 }
 
 class Plant{
-  constructor(name, scientificName, location) {
+  constructor(name, scientificName, location, planted, care) {
     this.id = plantsDB?.length;
     this.name = name;
     this.scientificName = scientificName;
     this.location = location;
-    this.plantedOn = new Date();
+    this.planted = planted || new Date();
     this.image = `images/${getRandomImage()}`;
-    this.careRoutines = [];
+    this.careRoutines = care || [];
     this.growthTracking = {};
   }
 }
 
 function displayPlant(plant) {
-  
-  let { id, name, scientificName: sciName, location: loc, image } = plant;
+  let { id, name, scientificName: sciName, location: loc, image} = plant;
   let newPlant = document.createElement('div');
   newPlant.className = 'col-lg-4 py-3 px-3';
   newPlant.id = `no-${id}`;
@@ -90,18 +93,19 @@ function displayPlant(plant) {
   plantCard.appendChild(plantCardImg);
   let plantCardBody = document.createElement('div');
   plantCardBody.classList.add("plant-card-body");
-  plantCardBody.innerHTML =
-    `<p class="plant-name"><a href="#">${name}</a></p> <p class="scientific-name">${sciName}</p> <p class="location">Location: ${loc}</p>`;
+  plantCardBody.innerHTML = `<p class="plant-name"><a href="#">${name}</a></p> 
+                            <p class="card-body-text scientific-name">${sciName}</p> 
+                            <p class="card-body-text location">Location: ${loc}</p>`;
   plantCard.appendChild(plantCardBody);
   let plantCardButtons = document.createElement('div');
   plantCardButtons.className = "flex card-buttons";
   let viewBtn = document.createElement('button');
-  viewBtn.className = "btn view-plant";
+  viewBtn.className = "btn btn-custom view-plant";
   viewBtn.innerHTML = `<i class="fa-solid fa-eye"></i> View`;
   viewBtn.addEventListener('click', () => { viewPlant(id) });
   plantCardButtons.appendChild(viewBtn);
   let delBtn = document.createElement('button');
-  delBtn.className = "btn delete-plant";
+  delBtn.className = "btn btn-custom delete-plant";
   delBtn.innerHTML = `<i class="fa-solid fa-trash"></i> Delete`;
   delBtn.addEventListener("click", () => { deletePlant(id)});
   plantCardButtons.appendChild(delBtn);
@@ -116,19 +120,36 @@ function updatePlantDB(plant) {
   displayPlant(plant);
 }
 
-function displayForm() {
-  addPlantModal.style.display = "block";
-  addPlantForm = document.getElementById('addPlantForm');
-  addPlantForm.addEventListener('submit', addNewPlant);
-}
-
 function addNewPlant(event) {
   event.preventDefault();
+  let gaps = ["Hours", "Days", "Weeks"]
   const name = $("#name").val();
   const scientificName = $("#scientificName").val();
+  const planted = $("#planted").val();
   const location = $("#location").val();
-  const ob = new Plant(name, scientificName, location);
+  const [type, freq, gap] = $("#watering").children();
+  const care = [{
+    type: type.value,
+    frequency: freq.value,
+    gap: gaps[gap.value],
+    lastCompleted: "",
+    nextDue: ""
+  }];
+  const ob = new Plant(name, scientificName, location, new Date(planted), care);
   updatePlantDB(ob);
+}
+
+function addRoutine() {
+  let newRoutine = $("div").addClass("mb-3 input-group care-routine")
+    .html(`<input type="text" aria-label="Routine type" class="form-control" placeholder="Type">
+                <input type="number" min="0" aria-label="Routine frequency" class="form-control" placeholder="Frequency">
+                <select class="form-select" aria-label="Routine duration" >
+                  <option value="0">Hours</option>
+                  <option selected value="1">Days</option>
+                  <option value="2">Weeks</option>
+                  <option value="3">Months</option>
+                </select>`);
+
 }
 
 function viewPlant(id) {}

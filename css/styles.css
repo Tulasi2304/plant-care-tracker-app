@@ -78,17 +78,17 @@ p {
     width: 30rem;
 }
 
-.btn {
+.btn-custom {
     background-color: var(--claret);
     color: var(--white-alt);
 }
 
-.btn:link {
+.btn-custom:link {
     background-color: var(--claret);
     color: var(--white-alt);
 }
 
-.btn:hover {
+.btn-custom:hover {
     background-color: #B33144;
     color: var(--white-alt);
 }
@@ -201,14 +201,18 @@ p.navbar-brand {
 }
 
 .scientific-name {
-    margin-top: 0;
-    margin-bottom: 0;
     font-style: italic;
+    padding-bottom: 8px;
     opacity: 0.85;
 }
 
-.location {
+.card-body-text {
     margin-top: 0;
+    margin-bottom: 0;
+}
+
+.location {
+    margin-bottom: 16px;
 }
 
 .flex {
@@ -223,7 +227,7 @@ p.navbar-brand {
 }
 
 .add-plant {
-    height: 345.33px;
+    height: 353.33px;
 }
 
 .add-plant:hover{
@@ -233,6 +237,11 @@ p.navbar-brand {
 
 .add-plant-btn {
     margin-top: calc(50%);
+}
+
+.cr-title {
+    font-size: 18px;
+    color: var(--claret);
 }
 
 .footer {

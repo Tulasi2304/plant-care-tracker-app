@@ -44,7 +44,7 @@
     <div id ="plantsList" class="row pt-5 pb-5 mx-lg-4 px-3 px-lg-5">
         <div class="col-lg-4 py-3 px-3 add-plant">
           <div class="add-plant plant-card center-align">
-            <button id="addPlant" type="button" class="btn add-plant-btn" data-bs-toggle="modal" data-bs-target="#addPlantModal">
+            <button id="addPlant" type="button" class="btn btn-custom add-plant-btn" data-bs-toggle="modal" data-bs-target="#addPlantModal">
               <i class="fa-solid fa-plus"></i> Add Plant
             </button>
             </div>
@@ -72,10 +72,28 @@
                 <input type="text" class="form-control" name="scientificName" id="scientificName">
               </div>
               <div class="mb-3">
+                <label for="location" class="form-label">Planted On</label>
+                <input type="date" class="form-control" name="planted" id="planted">
+              </div>
+              <div class="mb-3">
                 <label for="location" class="form-label">Location</label>
                 <input type="text" class="form-control" name="location" id="location">
               </div>
-              <button id="plantSubmit" class="btn view-plant" type="submit" data-bs-dismiss="modal">Submit</button>
+              <p class="mt-4 mb-2 cr-title bold" id="routines">Care Routines</p>
+              <div class="mb-3 input-group care-routine" id="watering">
+                <input type="text" aria-label="Routine type" class="form-control" value="Watering">
+                <input type="number" min="0" aria-label="Routine frequency" class="form-control" placeholder="Frequency">
+                <select class="form-select" aria-label="Routine duration">
+                  <option value="0">Hours</option>
+                  <option selected value="1">Days</option>
+                  <option value="2">Weeks</option>
+                </select>
+              </div>
+              <div class="mb-4">
+              <!-- <button id="addRoutine" class="btn btn-outline-secondary" type="button">Add Routine</button> -->
+              </div>
+
+              <button id="plantSubmit" class="btn btn-custom view-plant" type="submit" data-bs-dismiss="modal">Submit</button>
             </form>
           </div>
         </div>
