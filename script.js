@@ -55,7 +55,7 @@ class Plant{
 const testPlant = {
   id: 1,
   name: "Lilac",
-  scientificName: "Idk lol",
+  scientificName: "Lilacus lilaceae",
   location: "Terrace"
 }
 
