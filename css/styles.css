@@ -153,9 +153,21 @@ p.navbar-brand {
 
 .plant-card {
     background-color: var(--cornsilk);
+    border-radius: 5px;
+    box-shadow: none;
+    transform: perspective(100px) translateZ(0px);
+    transition: box-shadow 125ms ease-in-out,
+                transform 125ms ease-in-out;
+}
+
+.plant-card:hover {
+    box-shadow: 5px 5px 7px 0px #21242347;
+    transform: perspective(100px) translateZ(2px);
+    
 }
 
 .plant-card-image {
+    border-radius: 5px 5px 0 0;
     height: 12rem;
     max-width: 100%;
     background-color: var(--white-alt);
@@ -164,17 +176,14 @@ p.navbar-brand {
 }
 
 .plant-card-image img {
+    width: 100%;
+    border-radius: 5px 5px 0 0;
     height: inherit;
     transform: scale(1);
     opacity: 1;
     transition-property: transform, opacity;
     transition-duration: 200ms;
     transition-timing-function: ease-in-out;
-}
-
-.plant-card-image img:hover {
-    opacity: 0.75;
-    transform: scale(1.2);
 }
 
 .plant-card-body {
@@ -194,8 +203,13 @@ p.navbar-brand {
 
 .scientific-name {
     margin-top: 0;
+    margin-bottom: 0;
     font-style: italic;
     opacity: 0.85;
+}
+
+.location {
+    margin-top: 0;
 }
 
 .flex {
