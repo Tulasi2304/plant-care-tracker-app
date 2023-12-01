@@ -37,7 +37,7 @@ const plantsDisplay = document.getElementById("plantsList");
 const addPlantForm = document.getElementById("addPlantForm");
 addPlantForm.addEventListener("submit", addNewPlant);
 
-$("#addRoutine").click(addRoutine);
+// $("#addRoutine").click(addRoutine);
 
 let plantsDB = JSON.parse(localStorage.getItem("plantsDB"));
 if (plantsDB === undefined || plantsDB === null) {
@@ -52,16 +52,16 @@ if (plantsDB === undefined || plantsDB === null) {
       careRoutines: [
         {
           type: "Watering",
-          frequency: 1,
-          gap: "Days",
+          frequency: 12,
+          gap: "Hours",
         },
       ],
     },
     {
       id: 1,
-      name: "Rose",
-      scientificName: "Rosa centifolia",
-      location: "Terrace",
+      name: "Lilac",
+      scientificName: "Syringa vulgaris",
+      location: "Garden",
       image: "images/pexels-huy-phan-3153522.jpg",
       planted: "03/26/23",
       careRoutines: [
@@ -73,7 +73,7 @@ if (plantsDB === undefined || plantsDB === null) {
       ],
     },
   ];
-  //localStorage.setItem("plantsDB", JSON.stringify(plantsDB));
+  localStorage.setItem("plantsDB", JSON.stringify(plantsDB));
 }
 
 for (let plant of plantsDB) {
@@ -135,7 +135,7 @@ function displayPlant(plant) {
 
 function updatePlantDB(plant) {
   plantsDB.push(plant);
-  // localStorage.setItem("plantsDB", JSON.stringify(plantsDB));
+  localStorage.setItem("plantsDB", JSON.stringify(plantsDB));
   displayPlant(plant);
 }
 
@@ -156,21 +156,21 @@ function addNewPlant(event) {
   updatePlantDB(ob);
 }
 
-function addRoutine() {
-  let newRoutine = $("div").addClass("mb-3 input-group care-routine")
-    .html(`<input type="text" aria-label="Routine type" class="form-control" placeholder="Type">
-                <input type="number" min="0" aria-label="Routine frequency" class="form-control" placeholder="Frequency">
-                <select class="form-select" aria-label="Routine duration" >
-                  <option value="0">Hours</option>
-                  <option selected value="1">Days</option>
-                  <option value="2">Weeks</option>
-                  <option value="3">Months</option>
-                </select>`);
+// function addRoutine() {
+//   let newRoutine = $("div").addClass("mb-3 input-group care-routine")
+//     .html(`<input type="text" aria-label="Routine type" class="form-control" placeholder="Type">
+//                 <input type="number" min="0" aria-label="Routine frequency" class="form-control" placeholder="Frequency">
+//                 <select class="form-select" aria-label="Routine duration" >
+//                   <option value="0">Hours</option>
+//                   <option selected value="1">Days</option>
+//                   <option value="2">Weeks</option>
+//                   <option value="3">Months</option>
+//                 </select>`);
 
-}
+// }
 
 function viewPlant(id) {
-  localStorage.setItem("currentPlant", JSON.stringify(plantsDB[id]));
+  // localStorage.setItem("currentPlant", JSON.stringify(plantsDB[id]));
   let currentPlant = plantsDB[id];
   $("#modalPlantName").html(
     `${currentPlant.name} <span class="italic">(${currentPlant.scientificName})</span>`
@@ -215,5 +215,5 @@ function viewPlant(id) {
 function deletePlant(id) {
   $(`#no-${id}`).remove();
   plantsDB.splice(id, 1);
-  // localStorage.setItem("plantsDB", JSON.stringify(plantsDB));
+  localStorage.setItem("plantsDB", JSON.stringify(plantsDB));
 }
