@@ -71,7 +71,7 @@
                 <input type="text" class="form-control" name="scientificName" id="scientificName">
               </div>
               <div class="mb-3">
-                <label for="location" class="form-label">Planted On</label>
+                <label for="planted" class="form-label">Planted On</label>
                 <input type="date" class="form-control" name="planted" id="planted">
               </div>
               <div class="mb-3">
@@ -83,10 +83,15 @@
                 <input type="text" aria-label="Routine type" class="form-control" value="Watering">
                 <input type="number" min="0" aria-label="Routine frequency" class="form-control" placeholder="Frequency">
                 <select class="form-select" aria-label="Routine duration">
-                  <option value="0">Hours</option>
-                  <option selected value="1">Days</option>
-                  <option value="2">Weeks</option>
+                  <option value="0">Minutes</option>
+                  <option value="1">Hours</option>
+                  <option selected value="2">Days</option>
+                  <option value="3">Weeks</option>
                 </select>
+              </div>
+              <div class="mb-3">
+                <label for="completed" class="form-label">Last Completed</label>
+                <input type="time" class="form-control" name="completed" id="completed">
               </div>
               <div class="mb-4">
               <!-- <button id="addRoutine" class="btn btn-outline-secondary" type="button">Add Routine</button> -->

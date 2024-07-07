@@ -141,7 +141,7 @@ function updatePlantDB(plant) {
 
 function addNewPlant(event) {
   event.preventDefault();
-  let gaps = ["Hours", "Days", "Weeks"]
+  let gaps = ["Minutes", "Hours", "Days", "Weeks"]
   const name = $("#name").val();
   const scientificName = $("#scientificName").val();
   const planted = $("#planted").val();
@@ -217,3 +217,7 @@ function deletePlant(id) {
   plantsDB.splice(id, 1);
   localStorage.setItem("plantsDB", JSON.stringify(plantsDB));
 }
+
+// var audio = new Audio('Alarm-Windows-10.mp3');
+// sound.loop = true;
+
