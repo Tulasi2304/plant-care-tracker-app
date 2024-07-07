@@ -56,6 +56,7 @@ if (plantsDB === undefined || plantsDB === null) {
           gap: "Hours",
         },
       ],
+      completedTime: "08:10:01",
     },
     {
       id: 1,
@@ -71,6 +72,7 @@ if (plantsDB === undefined || plantsDB === null) {
           gap: "Days",
         },
       ],
+      completedTime: "08:15:11",
     },
   ];
   localStorage.setItem("plantsDB", JSON.stringify(plantsDB));
@@ -210,7 +212,6 @@ function viewPlant(id) {
   let todayDate = new Date();
   let completed = new Date(todayDate.getFullYear(), todayDate.getMonth(), todayDate.getDate(), hours, minutes, seconds);
   let due = completed.getTime() + timeToAdd;
-  console.log(completed);
 
   $("#plantDetailsModal .routines .completed span").text(
     completed.toLocaleString("en-US", options)
@@ -225,6 +226,14 @@ function deletePlant(id) {
   localStorage.setItem("plantsDB", JSON.stringify(plantsDB));
 }
 
-// var audio = new Audio('Alarm-Windows-10.mp3');
-// sound.loop = true;
+// var audio = new Audio('audio/Alarm-Windows-10.mp3');
+// audio.loop = true;
+// setInterval(function(){
+  
+//   currentTime = new Date().toLocaleString("en-US", options);
+// 	if (due == currentTime) {
+// 		audio.play();
+// 	}
+
+// },1000);
 
