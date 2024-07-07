@@ -81,7 +81,7 @@ for (let plant of plantsDB) {
 }
 
 class Plant{
-  constructor(name, scientificName, location, planted, care) {
+  constructor(name, scientificName, location, planted, care, completed) {
     this.id = plantsDB?.length;
     this.name = name;
     this.scientificName = scientificName;
@@ -89,6 +89,7 @@ class Plant{
     this.planted = planted || new Date();
     this.image = `images/${getRandomImage()}`;
     this.careRoutines = care || [];
+    this.completedTime = completed;
     this.growthTracking = {};
   }
 }
@@ -152,7 +153,8 @@ function addNewPlant(event) {
     frequency: freq.value,
     gap: gaps[gap.value],
   }];
-  const ob = new Plant(name, scientificName, location, new Date(planted), care);
+  const completed = $('#completed').val();
+  const ob = new Plant(name, scientificName, location, new Date(planted), care, completed);
   updatePlantDB(ob);
 }
 
@@ -194,16 +196,21 @@ function viewPlant(id) {
   let timeToAdd = 0;
   let routine = currentPlant.careRoutines[0];
   switch (routine.gap) {
+    case "Minutes": timeToAdd += routine.frequency * 60 * 1000;
+      break;
     case "Hours": timeToAdd += routine.frequency * 3600 * 1000;
       break;
     case "Days": timeToAdd += routine.frequency * 24 * 3600 * 1000;
       break;
     case "Weeks": timeToAdd += routine.frequency * 7 * 24 * 3600 * 1000;
-    
+      break;
   }
 
-  let completed = new Date();
+  const [hours, minutes, seconds] = currentPlant.completedTime.split(':');
+  let todayDate = new Date();
+  let completed = new Date(todayDate.getFullYear(), todayDate.getMonth(), todayDate.getDate(), hours, minutes, seconds);
   let due = completed.getTime() + timeToAdd;
+  console.log(completed);
 
   $("#plantDetailsModal .routines .completed span").text(
     completed.toLocaleString("en-US", options)
