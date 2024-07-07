@@ -173,6 +173,16 @@ function addNewPlant(event) {
 
 // }
 
+let options = {
+  year: "numeric",
+  month: "numeric",
+  day: "numeric",
+  hour12: true,
+  hour: "numeric",
+  minute: "numeric",
+  second: 'numeric',
+};
+
 function viewPlant(id) {
   // localStorage.setItem("currentPlant", JSON.stringify(plantsDB[id]));
   let currentPlant = plantsDB[id];
@@ -185,16 +195,23 @@ function viewPlant(id) {
     month: "short",
     day: "numeric",
   }));
-  
-  let options = {
-    year: "numeric",
-    month: "numeric",
-    day: "numeric",
-    hour12: true,
-    hour: "numeric",
-    minute: "numeric",
-  };
 
+  const [completed, due] = calculateDue(currentPlant);
+
+  $("#plantDetailsModal .routines .completed span").text(
+    completed.toLocaleString("en-US", options)
+  );
+  $("#plantDetailsModal .routines .due span").text(new Date(due).toLocaleString("en-US", options));
+
+}
+
+function deletePlant(id) {
+  $(`#no-${id}`).remove();
+  plantsDB.splice(id, 1);
+  localStorage.setItem("plantsDB", JSON.stringify(plantsDB));
+}
+
+calculateDue = (currentPlant) => {
   let timeToAdd = 0;
   let routine = currentPlant.careRoutines[0];
   switch (routine.gap) {
@@ -212,28 +229,35 @@ function viewPlant(id) {
   let todayDate = new Date();
   let completed = new Date(todayDate.getFullYear(), todayDate.getMonth(), todayDate.getDate(), hours, minutes, seconds);
   let due = completed.getTime() + timeToAdd;
-
-  $("#plantDetailsModal .routines .completed span").text(
-    completed.toLocaleString("en-US", options)
-  );
-  $("#plantDetailsModal .routines .due span").text(new Date(due).toLocaleString("en-US", options));
-
+  return [completed, due];
 }
 
-function deletePlant(id) {
-  $(`#no-${id}`).remove();
-  plantsDB.splice(id, 1);
-  localStorage.setItem("plantsDB", JSON.stringify(plantsDB));
+var audio = new Audio('audio/Alarm-Windows-10.mp3');
+audio.loop = true;
+dueDates = [];
+
+for (let plant of plantsDB) {
+  const [completed, due] = calculateDue(plant);
+  dueDates.push(new Date(due).toLocaleString("en-US", options));
 }
+console.log(dueDates);
+let presentLength = plantsDB.length;
 
-// var audio = new Audio('audio/Alarm-Windows-10.mp3');
-// audio.loop = true;
-// setInterval(function(){
-  
-//   currentTime = new Date().toLocaleString("en-US", options);
-// 	if (due == currentTime) {
-// 		audio.play();
-// 	}
+setInterval(() => {
+  if(plantsDB.length !== presentLength){
+    location.reload();
+    presentLength = plantsDB.length;
+    console.log(dueDates);
+  }
+  current = new Date().toLocaleString("en-US", options);
+  // console.log(current);
+  if (dueDates.includes(current)) {
+    audio.play().then(() => {
+      if(window.confirm("You have an alarm set")){
+        location.reload();
+      }
+    });
+  }
+},1000);
 
-// },1000);
 
