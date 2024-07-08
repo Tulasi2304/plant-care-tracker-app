@@ -238,7 +238,11 @@ dueDates = [];
 
 for (let plant of plantsDB) {
   const [completed, due] = calculateDue(plant);
-  dueDates.push(new Date(due).toLocaleString("en-US", options));
+  dueDates.push(
+    {
+      id: plant.id, 
+      due: new Date(due).toLocaleString("en-US", options)
+    });
 }
 console.log(dueDates);
 let presentLength = plantsDB.length;
@@ -250,14 +254,8 @@ setInterval(() => {
     console.log(dueDates);
   }
   current = new Date().toLocaleString("en-US", options);
-  // console.log(current);
-  if (dueDates.includes(current)) {
+  if (dueDates.find(plant => plant.due === current)){
     playAlarm();
-    // audio.play().then(() => {
-    //   if(window.confirm("You have an alarm set")){
-    //     location.reload();
-    //   }
-    // });
   }
 },1000);
 
