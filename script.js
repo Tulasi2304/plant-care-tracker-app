@@ -243,27 +243,67 @@ for (let plant of plantsDB) {
       id: plant.id, 
       due: new Date(due).toLocaleString("en-US", options)
     });
+  console.log("ORIGINAL DUES ");
+  console.log(dueDates[2]);
 }
-console.log(dueDates);
+
 let presentLength = plantsDB.length;
 
 setInterval(() => {
   if(plantsDB.length !== presentLength){
     location.reload();
     presentLength = plantsDB.length;
-    console.log(dueDates);
   }
   current = new Date().toLocaleString("en-US", options);
-  if (dueDates.find(plant => plant.due === current)){
-    playAlarm();
+  if (due = dueDates.find(plant => plant.due === current)){
+    playAlarm(due.id);
   }
+  
+  checkChangedDues();  
+
 },1000);
 
-playAlarm = async () => {
+playAlarm = async (id) => {
   await audio.play();
   setTimeout(function(){
-    if(window.confirm("You have an alarm set")){
+    let plant = plantsDB.find(plant => plant.id === id);
+    if(window.confirm("You have an alarm set for your \""+plant.name+"\" plant")){
       location.reload();
     }
   } ,1000);
+  for (let plant of plantsDB) {
+    if (plant.id === id) {
+        plant.completedTime = convertTo24HourTime(new Date().toLocaleString("en-US", options));  //make this current time after changes
+        console.log("COMPLETED "+plant.completedTime);
+    }
+  }
+  localStorage.setItem("plantsDB", JSON.stringify(plantsDB));
+}
+
+checkChangedDues = () => {
+  current = new Date().toLocaleString("en-US", options);
+  changedDues = dueDates.find(plant => plant.due < current);
+  if(changedDues){
+    for (let date of dueDates) {
+      if (date.id === changedDues.id) {
+        fiveSecsAhead = new Date().getTime() + 5000;
+        date.due = new Date(fiveSecsAhead).toLocaleString("en-US", options);
+        console.log("CHANGED DUES ");
+        console.log(dueDates[2]);
+      }
+    }
+  }
+}
+
+function convertTo24HourTime(dateString) {
+  const date = new Date(dateString);
+  
+  const options = {
+    hour: '2-digit',
+    minute: '2-digit',
+    second: '2-digit',
+    hour12: false 
+  };
+  const formattedTime = new Intl.DateTimeFormat('en-US', options).format(date);
+  return formattedTime;
 }
