@@ -252,12 +252,20 @@ setInterval(() => {
   current = new Date().toLocaleString("en-US", options);
   // console.log(current);
   if (dueDates.includes(current)) {
-    audio.play().then(() => {
-      if(window.confirm("You have an alarm set")){
-        location.reload();
-      }
-    });
+    playAlarm();
+    // audio.play().then(() => {
+    //   if(window.confirm("You have an alarm set")){
+    //     location.reload();
+    //   }
+    // });
   }
 },1000);
 
-
+playAlarm = async () => {
+  await audio.play();
+  setTimeout(function(){
+    if(window.confirm("You have an alarm set")){
+      location.reload();
+    }
+  } ,1000);
+}
