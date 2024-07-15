@@ -10,6 +10,9 @@
   "author": "Sushma Jayaram",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.19.2"
+    "cron": "^3.1.7",
+    "express": "^4.19.2",
+    "mongoose": "^8.5.1",
+    "twilio": "^5.2.2"
   }
 }
