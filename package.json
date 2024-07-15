@@ -1,0 +1,15 @@
+{
+  "name": "y",
+  "version": "1.0.0",
+  "description": "A responsive website for tracking and managing plant care routines, including watering schedules and growth tracking.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server.js"
+  },
+  "author": "Sushma Jayaram",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.19.2"
+  }
+}
