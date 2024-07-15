@@ -26,17 +26,7 @@ const calculateDue = (gap, frequency, completed) => {
     seconds
   );
   let due = completedDate.getTime() + timeToAdd;
-  console.log(
-    new Date(due).toLocaleString("en-US", {
-      year: "numeric",
-      month: "numeric",
-      day: "numeric",
-      hour12: true,
-      hour: "numeric",
-      minute: "numeric",
-      second: "numeric",
-    })
-  );
+  
   return due;
 };
 

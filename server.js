@@ -3,6 +3,7 @@ const app = express();
 const mongoose = require("mongoose");
 const expressSession = require("express-session");
 const connectMongo = require("connect-mongo");
+const cron = require("cron");
 
 const PORT = 3000
 const HTML = __dirname + "/public/html/"
@@ -15,6 +16,7 @@ app.use(express.static("public"));
 const User = require("./database/User.js");
 const Plant = require("./database/Plant.js").model;
 const CareRoutine = require("./database/CareRoutine.js").model;
+const sendReminder = require("./notifications/service.js");
 
 const mongoDBURL = `mongodb://localhost:27017/plantdb`;
 app.use(
@@ -61,8 +63,39 @@ app.post("/register", (req, res) => {
 })
 
 app.get("/u/:uid/plants", (req, res) => {
-  if ((req.session.userId == req.params.uid))
+  let plants;
+  if ((req.session.userId == req.params.uid)) {
+    function checkReminders() {
+      console.log("Executing");
+      User.findOne({ _id: req.session.userId }).then((user) => {
+        plants = user.plants;
+        routines = plants.map((p) => ({name: p.name, pid: p._id, routine: p.careRoutines[0]}));
+        now = new Date();
+        routines.forEach(({name, routine, pid}) => {
+          if (routine.nextDue <= now) {
+            console.log(`Reminder: Routine ${routine.type} due for ${name}`);
+            sendReminder(user.username, user.email, routine.type, name);
+
+            // Update nextDue date for the next reminder
+            now = new Date();
+            nowTime = [now.getHours(), now.getMinutes(), now.getSeconds()].join(':');
+            updatedDue = utils.calculateDue(routine.gap, routine.frequency, nowTime);
+            const plant = user.plants.id(pid);
+            const careRoutine = plant.careRoutines.id(routine._id);
+            careRoutine.nextDue = updatedDue;
+            
+            user.save().then((x) => console.log(`Next due successfully updated!`)).catch(err => console.log(err));
+          }
+        });
+      });
+      
+    }
+
+    // Check reminders every minute
+    const timer = setInterval(checkReminders, 30000);
+
     res.sendFile(`${HTML}plants.html`);
+  }
   else
     res.redirect("/register");
 });
