@@ -13,7 +13,7 @@ function sendReminder(toUser, toEmail, routine, plant) {
       to_email: toEmail,
       username: toUser,
       subject: 'Flora Tracker Reminder',
-      message: `Routine ${routine} due for ${plant}`,
+      message: `Routine ${routine} due for plant: ${plant}`,
     },
   };
 

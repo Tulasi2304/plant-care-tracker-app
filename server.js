@@ -3,7 +3,6 @@ const app = express();
 const mongoose = require("mongoose");
 const expressSession = require("express-session");
 const connectMongo = require("connect-mongo");
-const cron = require("cron");
 
 const PORT = 3000
 const HTML = __dirname + "/public/html/"
@@ -33,7 +32,7 @@ app.use(
 mongoose
   .connect(mongoDBURL)
   .then(() => console.log("Connected to Mongo."))
-  .catch((err) => console.log(err.message));
+  .catch((err) => console.log(`Not connected to Mongo: ${err.message}`));
 
 
 app.get("/", (req, res) => {
@@ -52,9 +51,9 @@ app.get("/register", (req, res) => {
   res.sendFile(`${HTML}register.html`);
 })
 app.post("/register", (req, res) => {
-  let { username, email, password, mobile } = req.body;
+  let { username, email, password} = req.body;
   // To Do: Validate user input
-  User.create({ username, email, password, mobile })
+  User.create({ username, email, password })
     .then((registeredUser) => {
       req.session.userId = registeredUser._id;
       res.redirect(`/u/${registeredUser._id}/plants`);
@@ -66,7 +65,7 @@ app.get("/u/:uid/plants", (req, res) => {
   let plants;
   if ((req.session.userId == req.params.uid)) {
     function checkReminders() {
-      console.log("Executing");
+      console.log("Checking reminders...");
       User.findOne({ _id: req.session.userId }).then((user) => {
         plants = user.plants;
         routines = plants.map((p) => ({name: p.name, pid: p._id, routine: p.careRoutines[0]}));
@@ -84,7 +83,14 @@ app.get("/u/:uid/plants", (req, res) => {
             const careRoutine = plant.careRoutines.id(routine._id);
             careRoutine.nextDue = updatedDue;
             
-            user.save().then((x) => console.log(`Next due successfully updated!`)).catch(err => console.log(err));
+            user
+              .save()
+              .then((x) =>
+                console.log(
+                  `Next due successfully updated!\n${x.plants.id(pid).careRoutines}`
+                )
+              )
+              .catch((err) => console.log(err));
           }
         });
       });

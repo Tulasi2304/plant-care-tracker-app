@@ -3,8 +3,8 @@ const plantSchema = require("./Plant.js").schema;
 
 const userSchema = new mongoose.Schema({
   username: { type: String },
-  email: { type: String, required: true, unique: true },
-  mobile: { type: String, match: /^\d{10}$/ },
+  email: { type: String, required: true, unique: false },
+  mobile: { type: String, match: /^\d{10}$/, required: false },
   password: String,
   plants: {type: [plantSchema], default: []}
 });
