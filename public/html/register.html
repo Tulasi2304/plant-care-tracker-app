@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Flora</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Icon -->
+  <link rel="icon" href="favicon.ico">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+
+  <!-- Bootstrap -->
+  <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <script src="bootstrap/popper.min.js"></script>
+  <script src="bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Font Awesome -->
+  <script defer src="fontawesome/regular.min.js"></script>
+  <script defer src="fontawesome/solid.min.js"></script>
+  <script defer src="fontawesome/fontawesome.js"></script>
+  <!-- CSS -->
+  <link rel="stylesheet" href="css/styles.css">
+
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark">
+    <div class="container-fluid">
+      <p class="navbar-brand">Flora</p>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="/">HOME</a></li>
+          <li class="nav-item"><a class="nav-link" href="/about">ABOUT</a></li>
+          <li class="nav-item"><a class="nav-link" href="/contact">CONTACT</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <div class="content-wrap container-fluid">
+    <h1 class="title">Register</h1>
+    <p class="starting-content res-text">
+      Allow us to help you manage your plants efficiently!
+    </p>
+    <form class="w-50 px-5 mx-auto" action="/register" method="post">
+      <!-- Username input -->
+      <div class="form-outline mb-4">
+        <input type="text" id="username" class="form-control" name="username" required/>
+        <label class="form-label" for="username">Username</label>
+      </div>
+
+      <!-- Email input -->
+      <div class="form-outline mb-4">
+        <input type="email" id="email" class="form-control" name="email" required/>
+        <label class="form-label" for="email">Email address</label>
+      </div>
+
+      <!-- mobile number -->
+      <!-- <div class="form-outline mb-4">
+        <input type="text" id="mobile" class="form-control" name="mobile" pattern="\d{10}" title="Please enter a valid mobile number" required/>
+        <label class="form-label" for="mobile">Mobile Number</label>
+      </div> -->
+    
+      <!-- Password input -->
+      <div class="form-outline mb-4">
+        <input type="password" id="password" class="form-control" name="password" required/>
+        <label class="form-label" for="password">Password</label>
+      </div>
+      
+      <!-- Submit button -->
+      <button type="submit" class="btn btn-block btn-custom mb-4">Register</button>
+    </form>
+  </div>
+
+  <footer class="footer py-3">
+    <div class="footer-nav container-fluid">
+      <p class="ft-line">© Copyright Flora</p>
+      <div class="socials ms-auto">
+        <i class="ft-icons fa-brands fa-twitter"></i>
+        <i class="ft-icons fa-brands fa-facebook-f"></i>
+        <i class="ft-icons fa-brands fa-instagram"></i>
+        <i class="ft-icons fa-solid fa-envelope"></i>
+      </div>
+    </div>
+  </footer>
+</body>
+
+</html>

@@ -1,3 +1,6 @@
-public/
+public/audio/
+public/bootstrap/
+public/fontawesome/
+public/jquery.*
 package-lock.json
 node_modules/

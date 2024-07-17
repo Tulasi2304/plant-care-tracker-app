@@ -1,0 +1,407 @@
+:root{
+    --ebony: #566246ff;
+    --lion: #ba9571ff;
+    --claret: #8b2635ff;
+    --sage: #aab589ff;
+    --cornsilk: #fdf9e0ff;
+    --white-alt: #f1f1f1;
+    --black-alt: #212423;
+}
+
+body {
+    position: relative;
+    min-height: 100vh;
+}
+
+.container-fluid {
+    padding: 0 5%;
+}
+
+.content-wrap {
+    padding-bottom: 75px;
+}
+
+button.navbar-toggler {
+    outline: none;
+    border: none;
+}
+
+button.navbar-toggler:focus {
+    outline: none;
+    border: none;
+    box-shadow: none;
+}
+
+.title {
+    text-align: center;
+    color: var(--ebony);
+    padding: 2rem 0;
+    font-family: 'Poppins', sans-serif;
+}
+
+.starting-content {
+    text-align: center;
+}
+
+.center-align {
+    text-align: center;
+}
+
+h1 {
+    font-size: 3.5rem;
+}
+
+h2 {
+    font-size: 3rem;
+}
+
+h3 {
+    font-size: 2rem;
+}
+
+p {
+    font-size: 1rem;
+}
+
+/*********HOME PAGE***********/
+.main-heading {
+    color: var(--ebony);
+    font-size: 3.5rem;
+    margin: 15% 0 5%;
+    line-height: 1.5;
+}
+
+.plant-saplings {
+    margin: 6rem 2rem 0;
+    border-radius: 50%;
+    height: 30rem;
+    width: 30rem;
+}
+
+.btn-custom {
+    background-color: var(--claret);
+    color: var(--white-alt);
+}
+
+.btn-custom:link {
+    background-color: var(--claret);
+    color: var(--white-alt);
+}
+
+.btn-custom:hover {
+    background-color: #B33144;
+    color: var(--white-alt);
+}
+
+.view-plant {
+    border: none;
+    background-color: var(--ebony);
+}
+
+.view-plant:hover {
+    border: none;
+    background-color: #697856;
+}
+
+#curPlantImage {
+    border-radius: 0;
+}
+
+h1, h2, h3 {
+    color: var(--ebony);
+    text-align: center;
+    padding: 3rem 0 0;
+    font-family: 'Poppins', sans-serif;
+}
+
+.underline {
+    display: inline-block;
+    border-bottom: 2px solid var(--ebony);
+    padding-bottom: 1px;
+}
+
+hr {
+    margin-top: 2rem;
+}
+
+.navbar {
+    background-color: var(--sage);
+    padding-top: 15px;
+    padding-bottom: 15px;
+    border: 0;
+    border-radius: 0;
+    margin-bottom: 0.75rem;
+    font-size: 12px;
+}
+
+.nav-link {
+    color: var(--white-alt);
+    transition: color 150ms ease-in-out;
+}
+
+p.navbar-brand {
+    margin: 0;
+}
+
+.navbar-nav li a:hover {
+    color: var(--claret) !important;
+}
+
+.plant-name {
+    color: var(--ebony);
+    margin-bottom: 0;
+    padding-bottom: 0.25rem;
+    line-height: 1.5rem;
+    padding-top: 0.25rem;
+    font-weight: bold;
+    font-family: 'Poppins', sans-serif;
+}
+
+.plant-card {
+    background-color: var(--cornsilk);
+    border-radius: 5px;
+    box-shadow: none;
+    transform: scale(1);
+    transition: box-shadow 125ms ease-in-out,
+                transform 125ms ease-in-out;
+}
+
+.plant-card:hover {
+    box-shadow: 7px 12px 12px 0px #21242347;
+    transform: scale(1.01);
+    
+}
+
+.plant-card-image {
+    border-radius: 5px 5px 0 0;
+    height: 12rem;
+    max-width: 100%;
+    background-color: var(--white-alt);
+    overflow: hidden;
+    text-align: center;
+}
+
+.plant-card-image img {
+    width: 100%;
+    border-radius: 5px 5px 0 0;
+    height: inherit;
+    transform: scale(1);
+    opacity: 1;
+}
+
+.plant-card-body {
+    padding: 0.25rem 0.5rem 0.5rem;
+}
+
+.plant-name a {
+    color: var(--black-alt);
+    text-decoration: none;
+    transition: color 175ms ease-in-out;
+}
+
+.plant-name a:hover {
+    color: var(--ebony);
+    text-decoration: none;
+}
+
+.scientific-name {
+    font-style: italic;
+    padding-bottom: 8px;
+    opacity: 0.85;
+}
+
+.card-body-text {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.location {
+    margin-bottom: 16px;
+}
+
+.flex {
+    display: flex;
+    flex-direction: row;
+}
+
+.card-buttons{
+    justify-content: flex-start;
+    gap: 1rem;
+    padding: 0 0.5rem 0.5rem;
+}
+
+.add-plant {
+    height: 353.33px;
+}
+
+.add-plant:hover{
+    transform: perspective(100px) translateZ(0px);
+    box-shadow: none;
+}
+
+.add-plant-btn {
+    margin-top: calc(50%);
+}
+
+.cr-title {
+    font-size: 18px;
+    color: var(--claret);
+}
+
+/* .routines p:not(:first-child) {
+    text-align: left;
+} */
+
+.routines p {
+    margin: 0;
+}
+
+.routine-name {
+    text-transform: uppercase;
+}
+
+.footer {
+    position: absolute;
+    text-align: center;
+    bottom: 0;
+    width: 100%;
+    height: 60px;
+    background-color: var(--lion);
+    color: var(--white-alt);
+}
+
+.footer p {
+    margin: 0;
+}
+
+.socials :not(:last-child){
+    margin-right: 1rem;
+}
+
+.footer-nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+.italic {
+    font-style: italic;
+}
+
+/* Features */
+
+#features{
+    background-color: var(--cornsilk);
+    padding: 5rem;
+}
+
+.feature-icons{
+    font-size: 3rem;
+    margin-top: 3rem;
+}
+
+.features-title{
+    padding-top: 1rem;
+}
+
+.features-line{
+    padding: 0 6rem;
+    text-align: center;
+}
+
+/* Reviews */
+
+#reviews{
+    padding: 0 1rem 8rem;
+}
+
+.carousel-item{
+    padding: 8% 20%;
+    background-color: var(--cornsilk);
+    text-align: center;
+}
+
+.carousel-control-prev-icon, .carousel-control-next-icon{
+    background-color: var(--claret); 
+}
+
+/*********ABOUT US***********/
+
+.about-page{
+    text-align: left;
+}
+
+.plant-images {
+    overflow: hidden;
+    margin: auto;
+}
+
+#introduction, #mission{
+    padding: 2rem ;
+    text-align: justify;
+}
+
+.img-col{
+    text-align: center;
+    /* padding: 1rem; */
+}
+
+.about-img{
+    width: 80%;
+    /* margin-right: 1rem; */
+    overflow: hidden;
+}
+
+.paragraph{
+    padding: 1rem 0;
+    text-align: center;
+}
+
+/* Media breakpoints */
+
+@media (max-width: 1028px) {
+    .plant-card-image {
+        width: 100%;
+        height: auto;
+    }
+
+    .plant-card-image img {
+        width: inherit;
+
+    }
+    body .res-text {
+        font-size: larger;
+    }
+
+    .about-img{
+        /* width: 100%; */
+        margin: 1rem;
+    }
+
+    .plant-saplings{
+        border-radius: 50%;
+        height: 15rem;
+        width: 15rem;
+        margin: 4rem auto 0;
+    }
+
+    .features-line{
+        padding: 0;
+        text-align: center;
+    }
+
+    #reviews{
+        padding: 0 1rem 8rem;
+    }
+
+    .carousel-item{
+        padding: 8% 20%;
+        font-size: 1rem;
+        background-color: var(--cornsilk);
+        text-align: center;
+    }
+}
